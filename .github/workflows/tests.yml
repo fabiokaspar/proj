@@ -1,12 +1,8 @@
 name: Cypress Automated Tests on Develop
-
-on:
-  schedule:
-    - cron: '*/5 * * * 1-5'
+on: workflow_dispatch
 
 jobs:
   cypress-run:
-    if: github.ref == 'refs/heads/develop'
     name: Running Automated Tests
     runs-on: ubuntu-latest
     steps:
@@ -20,5 +16,3 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
