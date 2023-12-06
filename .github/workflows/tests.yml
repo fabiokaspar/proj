@@ -1,0 +1,25 @@
+name: Cypress Automated Tests
+
+on:
+  schedule:
+    - cron: '*/5 * * * 1-5'
+
+jobs:
+  cypress-run:
+    if: github.ref == 'refs/heads/develop'
+    name: Running Automated Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: yarn dev
+          browser: chrome
