@@ -1,4 +1,4 @@
-name: Cypress Automated Tests
+name: Cypress Automated Tests on Develop
 
 on:
   schedule:
@@ -21,5 +21,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: yarn dev
           browser: chrome
